@@ -17,6 +17,7 @@ ember-computed-getter-codemod ember-computed-getter-codemod path/of/files/ or/so
 <!--FIXTURES_TOC_START-->
 * [basic](#basic)
 * [formatted](#formatted)
+* [setter](#setter)
 <!--FIXTURES_TOC_END-->
 
 <!--FIXTURES_CONTENT_START-->

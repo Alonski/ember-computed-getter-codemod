@@ -1,6 +1,6 @@
 {
   "name": "ember-computed-getter-codemod",
-  "version": "1.0.1",
+  "version": "1.1.1",
   "author": {
     "name": "Alon Bukai",
     "email": "alonzorz@gmail.com",
