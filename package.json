@@ -1,6 +1,6 @@
 {
   "name": "ember-computed-getter-codemod",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": {
     "name": "Alon Bukai",
     "email": "alonzorz@gmail.com",
@@ -36,5 +36,6 @@
   },
   "jest": {
     "testEnvironment": "node"
-  }
+  },
+  "repository": {"type": "git", "url": "https://github.com/Alonski/ember-computed-getter-codemod"}
 }
