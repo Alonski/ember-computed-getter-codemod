@@ -12,16 +12,18 @@ module.exports = function transformer(file, api) {
             }
 
             const getter = path.node.arguments[0];
-            const firstLine = getter.body.body[0];
-            const test = firstLine.test;
-            if (
-                firstLine.type === "IfStatement" &&
-                test.operator === ">" &&
-                test.left.object.name === "arguments" &&
-                test.left.property.name === "length" &&
-                test.right.value === 1
-            ) {
-                return;
+            if (getter.body) {
+                const firstLine = getter.body.body[0];
+                const test = firstLine.test;
+                if (
+                    firstLine.type === "IfStatement" &&
+                    test.operator === ">" &&
+                    test.left.object.name === "arguments" &&
+                    test.left.property.name === "length" &&
+                    test.right.value === 1
+                ) {
+                    return;
+                }
             }
             path.node.arguments[0] = j.objectExpression([
                 j.objectMethod("method", j.identifier("get"), getter.params, getter.body)
