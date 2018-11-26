@@ -1,0 +1,40 @@
+{
+  "name": "ember-computed-getter-codemod",
+  "version": "1.0.0",
+  "author": {
+    "name": "Alon Bukai",
+    "email": "alonzorz@gmail.com",
+    "url": "https://github.com/alonski"
+  },
+  "contributors": [
+    {
+      "name": "Robert Jackson",
+      "email": "me@rwjblue.com",
+      "url": "https://github.com/rwjblue"
+    }
+  ],
+  "license": "MIT",
+  "scripts": {
+    "test": "codemod-cli test",
+    "update-docs": "codemod-cli update-docs",
+    "lint:js": "eslint transforms",
+    "lint:fix": "yarn lint:js --fix"
+  },
+  "bin": "./bin/cli.js",
+  "keywords": [
+    "codemod-cli"
+  ],
+  "dependencies": {
+    "codemod-cli": "^0.2.7"
+  },
+  "devDependencies": {
+    "eslint": "^5.9.0",
+    "eslint-config-prettier": "^3.3.0",
+    "eslint-plugin-prettier": "^3.0.0",
+    "prettier": "^1.15.2",
+    "jest": "^23.1.0"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  }
+}
