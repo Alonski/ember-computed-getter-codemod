@@ -1,7 +1,7 @@
 Ember.Object.extend({
-    dateFilterEnd: computed(function(key, value) {
+    dateFilterEnd: computed(function() {
         if (arguments.length > 1) {
-            key = value;
+            key = arguments[1];
         } else {
             return "myComputed";
         }
