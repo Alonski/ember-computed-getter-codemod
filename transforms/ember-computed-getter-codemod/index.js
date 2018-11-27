@@ -1,17 +1,18 @@
 const { getParser } = require("codemod-cli").jscodeshift;
 
-// Taken from https://astexplorer.net/#/gist/b209a80226d4724feb909d88d25ba18e/352207fd48d1e34829eb72564dd2632ff218572c
+// Taken from https://astexplorer.net/#/gist/b209a80226d4724feb909d88d25ba18e/15f040b98fa77a3027a6e73e977a8ceac7b3283c
 module.exports = function transformer(file, api) {
     const j = getParser(api);
 
     return j(file.source)
         .find(j.CallExpression, { callee: { name: "computed" } })
         .forEach(path => {
-            if (path.node.arguments[0].type === "ObjectExpression") {
+            const pathIdx = path.node.arguments.length - 1; // Always last argument
+            if (path.node.arguments[pathIdx].type === "ObjectExpression") {
                 return;
             }
 
-            const getter = path.node.arguments[0];
+            const getter = path.node.arguments[pathIdx];
             //in case of < Ember 1.12, check for old school arguments checking to determine if get or set
             //
             // if(arguments.length > 1){
@@ -51,7 +52,7 @@ module.exports = function transformer(file, api) {
                     }
                 }
             }
-            path.node.arguments[0] = j.objectExpression([
+            path.node.arguments[pathIdx] = j.objectExpression([
                 j.objectMethod("method", j.identifier("get"), getter.params, getter.body)
             ]);
         })
