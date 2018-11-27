@@ -5,7 +5,7 @@ Ember.Object.extend({
         },
 
         set() {
-            key = arguments[1];
+            arguments[0] = arguments[1];
         }
     })
 });

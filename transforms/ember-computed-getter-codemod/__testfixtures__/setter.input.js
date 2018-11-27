@@ -3,7 +3,7 @@ Ember.Object.extend({
         if (arguments.length > 1) {
             key = value;
         } else {
-            return "myComputed";
+            return key;
         }
     })
 });

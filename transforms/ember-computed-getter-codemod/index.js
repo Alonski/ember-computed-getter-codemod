@@ -19,31 +19,37 @@ module.exports = function transformer(file, api) {
             // }else{
             //     //getter
             // }
-            if (getter.body.body.length === 1 &&
+            if (
+                getter.body.body.length === 1 &&
                 getter.body.body[0].type === "IfStatement" &&
-                getter.body.body[0].test.type === 'BinaryExpression'){
-        
-                let left = getter.body.body[0].test.left;
-                let right = getter.body.body[0].test.right;
-                let operator = getter.body.body[0].test.operator;
-                
-                let consequent = getter.body.body[0].consequent;
-                let alternate = getter.body.body[0].alternate;
-                
-                if(left.object.name === "arguments" &&
-                   left.property.name === "length" &&
-                   right.value === 1){
-                    if(operator === '>'){
+                getter.body.body[0].test.type === "BinaryExpression"
+            ) {
+                const firstLine = getter.body.body[0];
+                const test = firstLine.test;
+
+                const left = test.left;
+                const right = test.right;
+                const operator = test.operator;
+
+                const consequent = firstLine.consequent;
+                const alternate = firstLine.alternate;
+
+                if (left.object.name === "arguments" && left.property.name === "length" && right.value === 1) {
+                    if (operator === ">") {
                         path.node.arguments[0] = j.objectExpression([
-                            j.objectMethod("method", j.identifier("get"), getter.params.length > 1 ? [getter.params[0]] : getter.params, alternate),
+                            j.objectMethod(
+                                "method",
+                                j.identifier("get"),
+                                getter.params.length > 1 ? [getter.params[0]] : getter.params,
+                                alternate
+                            ),
                             j.objectMethod("method", j.identifier("set"), getter.params, consequent)
                         ]);
                         return;
-                    }else{
+                    } else {
                         return;
                     }
                 }
-                
             }
             path.node.arguments[0] = j.objectExpression([
                 j.objectMethod("method", j.identifier("get"), getter.params, getter.body)

@@ -1,7 +1,7 @@
 Ember.Object.extend({
     dateFilterEnd: computed({
         get(key) {
-            return "myComputed";
+            return key;
         },
 
         set(key, value) {
