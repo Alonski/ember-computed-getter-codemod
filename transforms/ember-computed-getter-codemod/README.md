@@ -16,7 +16,11 @@ ember-computed-getter-codemod ember-computed-getter-codemod path/of/files/ or/so
 
 <!--FIXTURES_TOC_START-->
 * [basic](#basic)
+* [computed-args-formatted](#computed-args-formatted)
+* [computed-args](#computed-args)
+* [empty-body](#empty-body)
 * [formatted](#formatted)
+* [if-statement-no-args](#if-statement-no-args)
 * [setter-no-args](#setter-no-args)
 * [setter](#setter)
 <!--FIXTURES_TOC_END-->

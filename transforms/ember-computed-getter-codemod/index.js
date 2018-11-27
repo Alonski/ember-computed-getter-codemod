@@ -35,7 +35,13 @@ module.exports = function transformer(file, api) {
                 const consequent = firstLine.consequent;
                 const alternate = firstLine.alternate;
 
-                if (left.object.name === "arguments" && left.property.name === "length" && right.value === 1) {
+                if (
+                    left.object &&
+                    left.property &&
+                    left.object.name === "arguments" &&
+                    left.property.name === "length" &&
+                    right.value === 1
+                ) {
                     if (operator === ">") {
                         path.node.arguments[0] = j.objectExpression([
                             j.objectMethod(
